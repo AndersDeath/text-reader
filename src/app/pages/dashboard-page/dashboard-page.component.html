@@ -11,26 +11,29 @@
     <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
-<mat-card class="entry-card">
-  <mat-card-header>
-    <img mat-card-avatar class="header-image" *ngIf="userData.photoUrl" src={{userData.photoURL}} />
-    <mat-card-title *ngIf="!userData.displayName">{{userData.email}}</mat-card-title>
-    <mat-card-title *ngIf="userData.displayName">{{userData.displayName}}</mat-card-title>
-    <mat-card-subtitle *ngIf="userData.displayName">{{userData.email}}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>
-      uid: <strong>{{userData.uid}}</strong> <br />
-      emailVerified: <strong>{{userData.emailVerified}}</strong> <br />
-      isAnonymous: <strong>{{userData.isAnonymous}}</strong> <br />
-      createdAt: <strong>{{userData.createdAt | date:"HH:mm - dd.MM.yy" }}</strong> <br />
-      lastLoginAt: <strong>{{userData.lastLoginAt | date:"HH:mm - dd.MM.yy" }}</strong> <br />
-      provider: <strong>{{userData.providerData[0].providerId }}</strong> <br />
-    </p>
-  </mat-card-content>
 
-</mat-card>
+<div class="container">
+  <mat-card class="dashboard-card note">
+    <mat-card-header>
+      <img mat-card-avatar class="header-image" *ngIf="userData.photoUrl" src={{userData.photoURL}} />
+      <mat-card-title *ngIf="!userData.displayName">{{userData.email}}</mat-card-title>
+      <mat-card-title *ngIf="userData.displayName">{{userData.displayName}}</mat-card-title>
+      <mat-card-subtitle *ngIf="userData.displayName">{{userData.email}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        uid: <strong>{{userData.uid}}</strong> <br />
+        emailVerified: <strong>{{userData.emailVerified}}</strong> <br />
+        isAnonymous: <strong>{{userData.isAnonymous}}</strong> <br />
+        createdAt: <strong>{{userData.createdAt | date:"HH:mm - dd.MM.yy" }}</strong> <br />
+        lastLoginAt: <strong>{{userData.lastLoginAt | date:"HH:mm - dd.MM.yy" }}</strong> <br />
+        provider: <strong>{{userData.providerData[0].providerId }}</strong> <br />
+      </p>
+    </mat-card-content>
+  
+  </mat-card>
 
-<mat-card class="entry-card" *ngFor="let message of messages">
-  {{message.text}}
-</mat-card>
+  <mat-card class="entry-card note" *ngFor="let message of messages">
+    {{message.text}}
+  </mat-card>
+</div>
