@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <span>D</span>
+  <span>TR</span>
   <span class="spacer"></span>
   <button routerLink="/dashboard" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
     <mat-icon>home</mat-icon>
@@ -35,8 +35,7 @@
     <br>
       <editor [apiKey]="tinyApi" class="textarea"  [init]="{
         icons: 'material',
-        plugins: 'wordcount',
-        menubar: false,
+        plugins: 'wordcount code',
         min_height: 150
       }" formControlName="message"></editor>
     <div class="form-actions">

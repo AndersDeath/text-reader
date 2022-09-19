@@ -34,7 +34,6 @@ export class TextEditPageComponent implements OnInit {
       this.pageId = e.id;
       if(e.id !== 'add') {
         this.isNew = false;
-        console.log(e.id);
         this.authService.getText(this.userData, e.id).subscribe((text) => {
           const data = text.data();
           this.form.setValue({
@@ -64,7 +63,7 @@ export class TextEditPageComponent implements OnInit {
       });
     } else {
       this.authService.updateMessage(this.pageId, this.userData, data).then((e) => {
-        console.log(e)
+        // console.log(e)
       });
     }
   }

@@ -24,13 +24,11 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = this.authService.userData;
-    console.log('s')
     try {
       this.authService.getTexts(this.userData)
       .pipe(untilDestroyed(this)).subscribe((w) => {
         w.forEach((e) => {
           this.messages.push(e.data());
-          console.log(this.messages)
         });
       });
     } catch(e) {
