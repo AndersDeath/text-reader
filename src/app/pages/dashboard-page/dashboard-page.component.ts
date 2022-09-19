@@ -27,18 +27,7 @@ export class DashboardPageComponent implements OnInit {
     console.log('s')
     try {
       this.authService.getTexts(this.userData)
-      // .forEach((e) => {
-      //   console.log(e)
-      // //  let q =  e.get;
-      // //  console.log(q);
-      // })
       .pipe(untilDestroyed(this)).subscribe((w) => {
-        // console.log(w.forEach())
-        // console.log(w.data());
-        // let i = w
-        // console.log(i.ref.get().then((c) => {
-        //   console.log(c.data())
-        // }));
         w.forEach((e) => {
           this.messages.push(e.data());
           console.log(this.messages)
