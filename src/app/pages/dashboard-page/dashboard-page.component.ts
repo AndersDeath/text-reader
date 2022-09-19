@@ -41,6 +41,7 @@ export class DashboardPageComponent implements OnInit {
         // }));
         w.forEach((e) => {
           this.messages.push(e.data());
+          console.log(this.messages)
         });
       });
     } catch(e) {
@@ -51,7 +52,7 @@ export class DashboardPageComponent implements OnInit {
 
   sendFormData(form: any) {
     this.authService.writeMessage(this.userData, form.value.message);
-    this.form.setValue({message: ''})
+    // this.form.setValue({message: ''})
   }
 
   logout() {

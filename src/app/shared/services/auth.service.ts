@@ -178,11 +178,12 @@ export class AuthService {
 
   writeMessage(user: any ='', text: any = '') {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `notes/${uuidv4.v4()}`
+      `texts/${uuidv4.v4()}`
     );
     const data: any = {
-      displayName: user.displayName || '',
-      message: text,
+      text: text,
+      tid: uuidv4.v4(),
+      uid: user.uid,
     };
     return userRef.set(data, {
       merge: true,
