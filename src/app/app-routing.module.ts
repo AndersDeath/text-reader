@@ -1,3 +1,4 @@
+import { ViewerPageComponent } from './pages/viewer-page/viewer-page.component';
 import { TextEditPageComponent } from './pages/text-edit-page/text-edit-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: '', component: EntryPageComponent },
   { path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard] },
   { path: 'editor/:id', component: TextEditPageComponent, canActivate: [AuthGuard] },
+  { path: 'text/:id', component: ViewerPageComponent, canActivate: [AuthGuard] },
   { path: 'login', component: SignInComponent },
   { path: 'registration', component: SignUpComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },

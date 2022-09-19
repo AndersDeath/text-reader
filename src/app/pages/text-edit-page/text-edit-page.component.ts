@@ -36,7 +36,6 @@ export class TextEditPageComponent implements OnInit {
         this.isNew = false;
         console.log(e.id);
         this.authService.getText(this.userData, e.id).subscribe((text) => {
-          console.log(text.data())
           const data = text.data();
           this.form.setValue({
             title: data.title || '',
