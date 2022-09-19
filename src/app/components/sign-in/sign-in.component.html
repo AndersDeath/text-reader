@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+  <span>text-reader</span>
+</mat-toolbar>
+  <mat-card class="entry-card">
+    <h3>Sign in</h3>
+    <span>
+      <div class="form-layout">
+        <form [formGroup]="loginForm" (ngSubmit)="sendFormData(loginForm)">
+          <mat-form-field class="form-field">
+            <mat-label>Email</mat-label>
+            <input matInput inputmode="text" placeholder="Email" formControlName="email">
+            <mat-error>Email is required</mat-error>
+            <mat-error *ngIf="(loginForm.get('email'))?.errors?.['required']">
+              This field is required
+            </mat-error>
+            <mat-error *ngIf="(loginForm.get('email'))?.errors?.['email']">
+              Email has format like "foo@bar.com"
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="form-field">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="Type password" formControlName="password">
+            <mat-error>Password is required</mat-error>
+            <mat-error *ngIf="(loginForm.get('password'))?.errors?.['required']">
+              This field is required
+            </mat-error>
+          </mat-form-field>
+          <div  class="form-actions">
+            <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Sign Up</button>
+          </div>
+        </form>
+        <div class="form-actions">
+          <button mat-raised-button color="basic" (click)="loginByGoogle($event)">Login by Google</button>
+        </div>
+      </div>
+      <button mat-stroked-button routerLink="/forgot-password" color="basic">Forgot password?</button>
+      <button mat-stroked-button routerLink="/register-user" color="basic">Don't have an account?</button>
+    </span>
+  </mat-card>

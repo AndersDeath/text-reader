@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <span>text-reader</span>
+</mat-toolbar>
+<mat-card class="entry-card">
+  <h3>Verification email</h3>
+  <p>We have sent a confirmation email to <strong>{{email}}</strong>.</p>
+  <p>Please check your email and click on the link to verfiy your email address.</p>
+  <button mat-raised-button color="basic" (click)="sendVerification()">Resend verification email</button>
+  <p style="text-align: center; font-weight: bold;">or</p>
+  <button mat-raised-button color="basic" routerLink="/login">Login</button>
+</mat-card>
