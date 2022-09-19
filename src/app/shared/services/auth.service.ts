@@ -176,13 +176,15 @@ export class AuthService {
     });
   }
 
-  writeMessage(user: any ='', text: any = '') {
+  writeMessage(user: any ='', input: any) {
     const uid = uuidv4.v4();
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `texts/${uid}`
     );
     const data: any = {
-      text: text,
+      text: input.text,
+      title: input.title,
+      summary: input.summary,
       tid: uid,
       uid: user.uid,
     };
@@ -196,12 +198,14 @@ export class AuthService {
   }
 
 
-  updateMessage(uid: any, user: any ='', text: any = '') {
+  updateMessage(uid: any, user: any ='', input: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `texts/${uid}`
     );
     const data: any = {
-      text: text,
+      text: input.text,
+      title: input.title,
+      summary: input.summary,
       tid: uid,
       uid: user.uid,
     };

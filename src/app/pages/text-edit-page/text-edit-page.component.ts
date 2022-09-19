@@ -18,7 +18,8 @@ export class TextEditPageComponent implements OnInit {
   constructor(
     private authService: AuthService,
     public fb: UntypedFormBuilder,
-    private route: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private route: Router
   ) {
     this.form = this.fb.group({
       title: [null, []],
@@ -29,7 +30,7 @@ export class TextEditPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = this.authService.userData;
-    this.route.params.subscribe((e: any) => {
+    this.activatedRoute.params.subscribe((e: any) => {
       this.pageId = e.id;
       if(e.id !== 'add') {
         this.isNew = false;
@@ -53,14 +54,19 @@ export class TextEditPageComponent implements OnInit {
   }
 
   sendFormData(form: any) {
+    const data = {
+      text: form.value.message,
+      summary: form.value.summary,
+      title: form.value.title
+    }
     if(this.isNew) {
-      this.authService.writeMessage(this.userData, form.value.message).then((e) => [
-        console.log(e)
-      ]);
+      this.authService.writeMessage(this.userData, data).then((e) => {
+        this.route.navigate(['editor', e.uid])
+      });
     } else {
-      this.authService.updateMessage(this.pageId, this.userData, form.value.message).then((e) => [
+      this.authService.updateMessage(this.pageId, this.userData, data).then((e) => {
         console.log(e)
-      ]);
+      });
     }
   }
 
