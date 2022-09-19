@@ -177,16 +177,40 @@ export class AuthService {
   }
 
   writeMessage(user: any ='', text: any = '') {
+    const uid = uuidv4.v4();
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `texts/${uuidv4.v4()}`
+      `texts/${uid}`
     );
     const data: any = {
       text: text,
-      tid: uuidv4.v4(),
+      tid: uid,
       uid: user.uid,
     };
     return userRef.set(data, {
       merge: true,
+    }).then(() => {
+      return {
+        uid
+      }
+    });
+  }
+
+
+  updateMessage(uid: any, user: any ='', text: any = '') {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `texts/${uid}`
+    );
+    const data: any = {
+      text: text,
+      tid: uid,
+      uid: user.uid,
+    };
+    return userRef.set(data, {
+      merge: true,
+    }).then(() => {
+      return {
+        uid
+      }
     });
   }
 
@@ -194,6 +218,13 @@ export class AuthService {
     const userRef: AngularFirestoreCollection<any> = this.afs.collection(
       `texts`,
       ref => ref.where('uid', '==', user.uid)
+    );
+    return userRef.get();
+  }
+
+  getText(user: any, tid: any) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `texts/${tid}`
     );
     return userRef.get();
   }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddTextPageComponent } from './add-text-page.component';
+import { TextEditPageComponent } from './text-edit-page.component';
 
-describe('AddTextPageComponent', () => {
-  let component: AddTextPageComponent;
-  let fixture: ComponentFixture<AddTextPageComponent>;
+describe('TextEditPageComponent', () => {
+  let component: TextEditPageComponent;
+  let fixture: ComponentFixture<TextEditPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddTextPageComponent ]
+      declarations: [ TextEditPageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddTextPageComponent);
+    fixture = TestBed.createComponent(TextEditPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

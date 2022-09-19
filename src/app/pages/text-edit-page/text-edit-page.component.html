@@ -4,7 +4,7 @@
   <button routerLink="/dashboard" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
     <mat-icon>home</mat-icon>
   </button>
-  <button routerLink="/add-text" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+  <button routerLink="/editor/add" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
     <mat-icon>add</mat-icon>
   </button>
   <button (click)="logout()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
@@ -33,14 +33,12 @@
       </mat-expansion-panel>
     </mat-accordion>
     <br>
-    <!-- <mat-form-field class="form-field" appearance="fill"> -->
       <editor [apiKey]="tinyApi" class="textarea"  [init]="{
         icons: 'material',
         plugins: 'wordcount',
         menubar: false,
         min_height: 150
       }" formControlName="message"></editor>
-    <!-- </mat-form-field> -->
     <div class="form-actions">
       <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Save</button>
     </div>

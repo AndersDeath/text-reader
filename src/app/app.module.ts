@@ -21,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EntryPageComponent } from './pages/entry-page/entry-page.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { DatePipe } from '@angular/common';
-import { AddTextPageComponent } from './pages/add-text-page/add-text-page.component';
+import { TextEditPageComponent } from './pages/text-edit-page/text-edit-page.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 
 const FirebaseModules = [
@@ -41,7 +41,7 @@ const FirebaseModules = [
     VerifyEmailComponent,
     EntryPageComponent,
     DashboardPageComponent,
-    AddTextPageComponent
+    TextEditPageComponent
   ],
   imports: [
     BrowserModule,
