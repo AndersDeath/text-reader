@@ -28,6 +28,7 @@
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
     "@ngneat/until-destroy": "^9.2.2",
+    "@tinymce/tinymce-angular": "^7.0.0",
     "firebase": "^9.9.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

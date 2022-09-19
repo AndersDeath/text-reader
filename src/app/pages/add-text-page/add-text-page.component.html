@@ -14,10 +14,14 @@
 
 <mat-card class="dashboard-card">
   <form class="form-layout" [formGroup]="form" (ngSubmit)="sendFormData(form)">
-    <mat-form-field class="form-field" appearance="fill">
-      <mat-label>Message</mat-label>
-      <textarea cdkTextareaAutosize class="textarea" formControlName="message" matInput></textarea>
-    </mat-form-field>
+    <!-- <mat-form-field class="form-field" appearance="fill"> -->
+      <editor [apiKey]="tinyApi" class="textarea"  [init]="{
+        icons: 'material',
+        plugins: 'wordcount',
+        menubar: false,
+        min_height: 150
+      }" formControlName="message"></editor>
+    <!-- </mat-form-field> -->
     <div class="form-actions">
       <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Send</button>
     </div>

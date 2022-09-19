@@ -22,6 +22,7 @@ import { EntryPageComponent } from './pages/entry-page/entry-page.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { DatePipe } from '@angular/common';
 import { AddTextPageComponent } from './pages/add-text-page/add-text-page.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 const FirebaseModules = [
   AngularFireModule.initializeApp(environment.firebase),
@@ -49,7 +50,8 @@ const FirebaseModules = [
     ...FirebaseModules,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EditorModule
   ],
   providers: [
     AuthService,

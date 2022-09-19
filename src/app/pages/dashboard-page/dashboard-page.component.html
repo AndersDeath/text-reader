@@ -33,7 +33,7 @@
   
   </mat-card>
 
-  <mat-card class="entry-card note" *ngFor="let message of messages">
-    {{message.text}}
+  <mat-card class="entry-card note" *ngFor="let message of messages" [innerHTML]="message.text">
+  
   </mat-card>
 </div>
