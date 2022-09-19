@@ -10,6 +10,9 @@ service cloud.firestore {
       allow read, list: if true;
 
     }
+  match /texts/{textId} {
+      allow read:  if request.auth.uid == resource.data.uid;
+    }
   
   }
 }

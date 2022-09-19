@@ -196,6 +196,16 @@ export class AuthService {
     return userRef.get();
   }
 
+  getTexts(user: any) {
+    console.log(user);
+
+    const userRef: AngularFirestoreCollection<any> = this.afs.collection(
+      `texts`,
+      ref => ref.where('uid', '==', user.uid)
+    );
+    return userRef.get();
+  }
+
   /**
    *
    * @returns
