@@ -17,6 +17,8 @@ export class AddTextPageComponent implements OnInit {
     public fb: UntypedFormBuilder
   ) {
     this.form = this.fb.group({
+      title: [null, []],
+      summary: [null, []],
       message: [null, []],
     });
   }
@@ -31,7 +33,7 @@ export class AddTextPageComponent implements OnInit {
 
   sendFormData(form: any) {
     this.authService.writeMessage(this.userData, form.value.message);
-    this.form.setValue({message: ''})
+    this.form.setValue({message: '', summary: '', title: ''})
   }
 
 }

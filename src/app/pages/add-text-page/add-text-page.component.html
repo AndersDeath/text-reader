@@ -13,7 +13,26 @@
 </mat-toolbar>
 
 <mat-card class="dashboard-card">
-  <form class="form-layout" [formGroup]="form" (ngSubmit)="sendFormData(form)">
+  <form class="form-layout" [formGroup]="form"  (ngSubmit)="sendFormData(form)">
+    <mat-form-field class="example-full-width">
+      <mat-label>Title</mat-label>
+      <input  formControlName="title" type="text" matInput >
+    </mat-form-field>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Summary
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+       
+        <mat-form-field class="form-field">
+          <mat-label>Message</mat-label>
+          <textarea cdkTextareaAutosize class="textarea" formControlName="summary" matInput></textarea>
+        </mat-form-field>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <br>
     <!-- <mat-form-field class="form-field" appearance="fill"> -->
       <editor [apiKey]="tinyApi" class="textarea"  [init]="{
         icons: 'material',
@@ -23,7 +42,7 @@
       }" formControlName="message"></editor>
     <!-- </mat-form-field> -->
     <div class="form-actions">
-      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Send</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Save</button>
     </div>
   </form>
 </mat-card>
