@@ -25,11 +25,6 @@ export class EntryPageComponent implements OnInit {
         this.router.navigate(['/dashboard'])
       }
     });
-    this.authService.getAllMessages().pipe(untilDestroyed(this)).subscribe((w) => {
-      w.forEach((e) => {
-        this.messages.push(e.data());
-      });
-    });
   }
 
 }

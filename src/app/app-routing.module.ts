@@ -1,3 +1,4 @@
+import { AddTextPageComponent } from './pages/add-text-page/add-text-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -12,6 +13,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 const routes: Routes = [
   { path: '', component: EntryPageComponent },
   { path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard] },
+  { path: 'add-text', component: AddTextPageComponent, canActivate: [AuthGuard] },
   { path: 'login', component: SignInComponent },
   { path: 'registration', component: SignUpComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
