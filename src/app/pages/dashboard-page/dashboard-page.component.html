@@ -32,6 +32,5 @@
 </mat-card>
 
 <mat-card class="entry-card" *ngFor="let message of messages">
-  <b>{{message.displayName || 'Anonymous'}} :</b> <br/>
-  {{message.message}}
+  {{message.text}}
 </mat-card>
