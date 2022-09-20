@@ -172,12 +172,25 @@ export class AuthService {
       emailVerified: user.emailVerified
     };
 
-    if(user.tgName && user.tgKey) {
-      userData = {...userData, ...{tgName: user.tgName, tgKey: user.tgKey}}
-    }
     return userRef.set(userData, {
       merge: true,
     });
+  }
+
+  setShareBot(user: any) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `share-bot/${user.uid}`
+    );
+    return userRef.set({tgName: user.tgName, tgKey: user.tgKey, uid: user.uid, active: false}, {
+      merge: true,
+    });
+  }
+
+  getShareBot(user: any) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `share-bot/${user.uid}`
+    );
+    return userRef.get();
   }
 
   getUser(user: any) {

@@ -28,6 +28,13 @@ export class DashboardPageComponent implements OnInit {
   ngOnInit(): void {
     this.userData = this.authService.userData;
     try {
+      this.authService.authState().subscribe((state) => {
+        this.userData = state?.toJSON()
+      })
+    } catch(e) {
+      console.log(e);
+    }
+    try {
       this.authService.getTexts(this.userData)
       .pipe(untilDestroyed(this)).subscribe((w) => {
         w.forEach((e) => {
@@ -39,9 +46,8 @@ export class DashboardPageComponent implements OnInit {
     }
 
     try {
-      this.authService.getUser(this.userData).subscribe((text) => {
+      this.authService.getShareBot(this.userData).subscribe((text) => {
         const data = text.data();
-        console.log(data);
         this.userData = {...this.userData, ...data};
       })
     } catch(e) {
@@ -57,7 +63,7 @@ export class DashboardPageComponent implements OnInit {
       name: this.tgName.trim()
     }));
     // console.log(atob(this.tgKey));
-    this.authService.setUserData({...this.userData, ...{tgKey: this.tgKey, tgName: this.tgName.trim()}}).then((e) => {
+    this.authService.setShareBot({...this.userData, ...{tgKey: this.tgKey, tgName: this.tgName.trim()}}).then((e) => {
       console.log(e)
     })
   }
