@@ -170,10 +170,20 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
+      tgName: user.tgName || '',
+      tgKey: user.tgKey || ''
+
     };
     return userRef.set(userData, {
       merge: true,
     });
+  }
+
+  getUser(user: any) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user.uid}`
+    );
+    return userRef.get();
   }
 
   writeMessage(user: any ='', input: any) {
