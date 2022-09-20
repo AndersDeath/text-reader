@@ -41,6 +41,7 @@ export class DashboardPageComponent implements OnInit {
     try {
       this.authService.getUser(this.userData).subscribe((text) => {
         const data = text.data();
+        console.log(data);
         this.userData = {...this.userData, ...data};
       })
     } catch(e) {

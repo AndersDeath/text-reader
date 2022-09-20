@@ -164,16 +164,17 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
-    const userData: User = {
+    let userData: any = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
-      tgName: user.tgName || '',
-      tgKey: user.tgKey || ''
-
+      emailVerified: user.emailVerified
     };
+
+    if(user.tgName && user.tgKey) {
+      userData = {...userData, ...{tgName: user.tgName, tgKey: user.tgKey}}
+    }
     return userRef.set(userData, {
       merge: true,
     });
