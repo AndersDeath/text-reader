@@ -1,12 +1,16 @@
 <mat-toolbar color="primary">
-  <span>TR</span>
+  <span>TR</span>&nbsp;
+  <button mat-flat-button (click)="increase()">+</button>&nbsp;
+  <button mat-flat-button (click)="decrease()">-</button>&nbsp;
+  <button mat-flat-button (click)="reset()">reset</button>&nbsp;
+  <span>font-size: {{fontSize}}%</span>
   <span class="spacer"></span>
   <button routerLink="/dashboard" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
     <mat-icon>home</mat-icon>
   </button>
   <button routerLink="/editor/add" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
     <mat-icon>add</mat-icon>
-  </button> 
+  </button>
   <button [routerLink]="'/editor/' + pageId" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
     <mat-icon>edit</mat-icon>
   </button>
@@ -16,7 +20,11 @@
 </mat-toolbar>
 
 <mat-card class="dashboard-card">
-  <span [innerHTML]="data?.title"></span><br>
-  <span [innerHTML]="data?.summary"></span><br>
-  <span [innerHTML]="data?.text"></span>
+
+  <div [style.fontSize]="fontSize + '%'" [style.lineHeight]="fontSize/100">
+    <span [innerHTML]="data?.title"></span><br>
+    <span [innerHTML]="data?.summary"></span><br>
+    <span [innerHTML]="data?.text"></span>
+  </div>
+
 </mat-card>

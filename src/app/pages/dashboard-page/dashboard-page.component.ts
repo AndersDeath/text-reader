@@ -41,7 +41,6 @@ export class DashboardPageComponent implements OnInit {
     try {
       this.authService.getUser(this.userData).subscribe((text) => {
         const data = text.data();
-        console.log(data);
         this.userData = {...this.userData, ...data};
       })
     } catch(e) {
@@ -51,12 +50,12 @@ export class DashboardPageComponent implements OnInit {
   }
 
   generateTgKey() {
-    console.log(this.tgName)
+    // console.log(this.tgName)
     this.tgKey = btoa(JSON.stringify({
       code: uuidv4.v4(),
       name: this.tgName.trim()
     }));
-    console.log(atob(this.tgKey));
+    // console.log(atob(this.tgKey));
     this.authService.setUserData({...this.userData, ...{tgKey: this.tgKey, tgName: this.tgName.trim()}}).then((e) => {
       console.log(e)
     })

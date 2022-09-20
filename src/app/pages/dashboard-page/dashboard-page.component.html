@@ -13,7 +13,7 @@
 </mat-toolbar>
 
 <div class="container">
-  <mat-card class="dashboard-card note">
+  <mat-card class="dashboard-card note" *ngIf="userData !== null">
     <mat-card-header>
       <img mat-card-avatar class="header-image" *ngIf="userData.photoUrl" src={{userData.photoURL}} />
       <mat-card-title *ngIf="!userData.displayName">{{userData.email}}</mat-card-title>
@@ -27,7 +27,7 @@
         isAnonymous: <strong>{{userData.isAnonymous}}</strong> <br />
         createdAt: <strong>{{userData.createdAt | date:"HH:mm - dd.MM.yy" }}</strong> <br />
         lastLoginAt: <strong>{{userData.lastLoginAt | date:"HH:mm - dd.MM.yy" }}</strong> <br />
-        provider: <strong>{{userData.providerData[0].providerId }}</strong> <br />
+        provider: <strong>{{userData.providerData[0].providerId || '' }}</strong> <br />
         tgName: <strong>{{userData.tgName }}</strong> <br />
 
         tgKey: <strong>{{userData.tgKey }}</strong> <br />
