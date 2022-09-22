@@ -24,6 +24,7 @@ import { DatePipe } from '@angular/common';
 import { TextEditPageComponent } from './pages/text-edit-page/text-edit-page.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { ViewerPageComponent } from './pages/viewer-page/viewer-page.component';
+import { UserPageComponent } from './pages/user-page/user-page.component';
 
 const FirebaseModules = [
   AngularFireModule.initializeApp(environment.firebase),
@@ -43,7 +44,8 @@ const FirebaseModules = [
     EntryPageComponent,
     DashboardPageComponent,
     TextEditPageComponent,
-    ViewerPageComponent
+    ViewerPageComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,

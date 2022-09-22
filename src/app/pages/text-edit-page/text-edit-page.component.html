@@ -7,6 +7,9 @@
   <button routerLink="/editor/add" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
     <mat-icon>add</mat-icon>
   </button>
+  <button routerLink="/user" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+    <mat-icon>face</mat-icon>
+  </button>
   <button (click)="logout()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
     <mat-icon>logout</mat-icon>
   </button>
@@ -25,7 +28,7 @@
             Summary
           </mat-panel-title>
         </mat-expansion-panel-header>
-       
+
         <mat-form-field class="form-field">
           <mat-label>Message</mat-label>
           <textarea cdkTextareaAutosize class="textarea" formControlName="summary" matInput></textarea>
