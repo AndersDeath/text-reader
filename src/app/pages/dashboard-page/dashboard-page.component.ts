@@ -56,18 +56,6 @@ export class DashboardPageComponent implements OnInit {
 
   }
 
-  generateTgKey() {
-    // console.log(this.tgName)
-    this.tgKey = btoa(JSON.stringify({
-      code: uuidv4.v4(),
-      name: this.tgName.trim()
-    }));
-    // console.log(atob(this.tgKey));
-    this.authService.setShareBot({...this.userData, ...{tgKey: this.tgKey, tgName: this.tgName.trim()}}).then((e) => {
-      console.log(e)
-    })
-  }
-
   sendFormData(form: any) {
     this.authService.writeMessage(this.userData, form.value.message);
     // this.form.setValue({message: ''})
