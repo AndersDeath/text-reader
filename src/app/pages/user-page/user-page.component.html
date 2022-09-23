@@ -27,7 +27,11 @@
       lastLoginAt: <strong>{{userData.lastLoginAt | date:"HH:mm - dd.MM.yy" }}</strong> <br />
       provider: <strong>{{userData.providerData[0].providerId || '' }}</strong> <br />
       tgName: <strong>{{userData.tgName }}</strong> <br />
-      tgKey: <strong>{{userData.tgKey }}</strong> <br />
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>tgKey:</mat-label>
+        <textarea matInput wrap="soft">{{userData.tgKey }}</textarea>
+      </mat-form-field>
+      <button mat-stroked-button>Copy</button>
     </p>
     <mat-form-field class="full-width">
       <mat-label>You TG name</mat-label>
