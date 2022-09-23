@@ -31,7 +31,7 @@
         <mat-label>tgKey:</mat-label>
         <textarea matInput wrap="soft">{{userData.tgKey }}</textarea>
       </mat-form-field>
-      <button mat-stroked-button>Copy</button>
+      <button mat-stroked-button color="primary" (click)="copy()">Copy</button>
     </p>
     <mat-form-field class="full-width">
       <mat-label>You TG name</mat-label>

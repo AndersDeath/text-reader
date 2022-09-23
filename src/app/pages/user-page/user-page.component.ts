@@ -21,6 +21,7 @@ export class UserPageComponent implements OnInit {
     try {
       this.authService.authState().subscribe((state) => {
         this.userData = state?.toJSON()
+
       })
     } catch(e) {
       console.log(e);
@@ -30,6 +31,8 @@ export class UserPageComponent implements OnInit {
       this.authService.getShareBot(this.userData).subscribe((text) => {
         const data = text.data();
         this.userData = {...this.userData, ...data};
+        this.tgKey = this.userData.tgKey;
+        this.tgName = this.userData.tgName;
       })
     } catch(e) {
       console.log(e);
@@ -46,6 +49,10 @@ export class UserPageComponent implements OnInit {
     this.authService.setShareBot({...this.userData, ...{tgKey: this.tgKey, tgName: this.tgName.trim()}}).then((e) => {
       console.log(e)
     })
+  }
+
+  copy() {
+    console.log(this.tgKey)
   }
 
   logout() {
