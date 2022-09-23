@@ -52,7 +52,7 @@ export class UserPageComponent implements OnInit {
   }
 
   copy() {
-    console.log(this.tgKey)
+    navigator.clipboard.writeText(this.tgKey);
   }
 
   logout() {
