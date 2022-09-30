@@ -10,10 +10,20 @@ service cloud.firestore {
       allow read, list: if true;
 
     }
-  match /texts/{textId} {
+    match /texts/{textId} {
       allow read:  if request.auth.uid == resource.data.uid;
       allow create, write, update:  if request.auth.uid == request.resource.data.uid;
+      // match /texts/{textId} {
+      // 	allow read, list: if true;
+      // }
     }
-  
+    match /share-bot/{userId} {
+     allow read, write: if request.auth.uid == resource.data.uid;
+     allow create: if request.auth.uid != null;
+    }
+    match /links/{userId} {
+     allow read, write: if request.auth.uid == resource.data.uid;
+     allow create: if request.auth.uid != null;
+    }
   }
 }
