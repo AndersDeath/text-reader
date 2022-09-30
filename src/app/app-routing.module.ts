@@ -1,3 +1,4 @@
+import { LinksPageComponent } from './pages/links-page/links-page.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { ViewerPageComponent } from './pages/viewer-page/viewer-page.component';
 import { TextEditPageComponent } from './pages/text-edit-page/text-edit-page.component';
@@ -15,6 +16,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 const routes: Routes = [
   { path: '', component: EntryPageComponent },
   { path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard] },
+  { path: 'links', component: LinksPageComponent, canActivate: [AuthGuard] },
   { path: 'editor/:id', component: TextEditPageComponent, canActivate: [AuthGuard] },
   { path: 'text/:id', component: ViewerPageComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserPageComponent, canActivate: [AuthGuard] },
