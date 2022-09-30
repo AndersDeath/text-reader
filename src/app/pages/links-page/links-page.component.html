@@ -17,3 +17,14 @@
     <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
+<div class="container">
+
+  <mat-card class="entry-card note" *ngFor="let message of messages" >
+    <mat-card-title>{{message.title}}</mat-card-title>
+    <span [innerHTML]="message.summary"></span>
+    <mat-card-actions align="end">
+      <button mat-button [routerLink]="'/text/'+ message.tid ">View</button>
+      <button mat-button [routerLink]="'/editor/'+ message.tid ">Edit</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
