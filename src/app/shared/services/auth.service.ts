@@ -257,6 +257,15 @@ export class AuthService {
     return userRef.get();
   }
 
+
+  getLinks(user: any) {
+    const userRef: AngularFirestoreCollection<any> = this.afs.collection(
+      `links`,
+      ref => ref.where('uid', '==', user.uid)
+    );
+    return userRef.get();
+  }
+
   /**
    *
    * @returns

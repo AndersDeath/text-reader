@@ -24,7 +24,7 @@ export class LinksPageComponent implements OnInit {
       console.log(e);
     }
     try {
-      this.authService.getTexts(this.userData)
+      this.authService.getLinks(this.userData)
       .pipe(untilDestroyed(this)).subscribe((w) => {
         w.forEach((e) => {
           this.messages.push(e.data());
