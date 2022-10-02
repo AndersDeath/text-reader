@@ -25,29 +25,33 @@
     <mat-card-subtitle *ngIf="userData.displayName">{{userData.email}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>
-      uid: <strong>{{userData.uid}}</strong> <br />
-      emailVerified: <strong>{{userData.emailVerified}}</strong> <br />
-      isAnonymous: <strong>{{userData.isAnonymous}}</strong> <br />
-      createdAt: <strong>{{userData.createdAt | date:"HH:mm - dd.MM.yy" }}</strong> <br />
-      lastLoginAt: <strong>{{userData.lastLoginAt | date:"HH:mm - dd.MM.yy" }}</strong> <br />
-      provider: <strong>{{userData.providerData[0].providerId || '' }}</strong> <br />
-      tgName: <strong>{{userData.tgName }}</strong> <br />
-      <mat-form-field class="full-width" appearance="fill">
-        <mat-label>tgKey:</mat-label>
-        <textarea matInput wrap="soft">{{userData.tgKey }}</textarea>
+      <p>
+        uid: <strong>{{userData.uid}}</strong> <br />
+        emailVerified: <strong>{{userData.emailVerified}}</strong> <br />
+        isAnonymous: <strong>{{userData.isAnonymous}}</strong> <br />
+        createdAt: <strong>{{userData.createdAt | date:"HH:mm - dd.MM.yy" }}</strong> <br />
+        lastLoginAt: <strong>{{userData.lastLoginAt | date:"HH:mm - dd.MM.yy" }}</strong> <br />
+        provider: <strong>{{userData.providerData[0].providerId || '' }}</strong> <br />
+        tgName: <strong>{{userData.tgName }}</strong> <br />
+      <span *ngIf="userData.tgKey">
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>tgKey:</mat-label>
+          <textarea matInput wrap="soft">{{userData.tgKey }}</textarea>
+        </mat-form-field>
+        <button mat-stroked-button color="primary" (click)="copy()">Copy</button>
+      </span>
+      </p>
+    <span *ngIf="!userData.tgKey">
+      <mat-form-field class="full-width">
+        <mat-label>You TG name</mat-label>
+        <input matInput [(ngModel)]="tgName">
       </mat-form-field>
-      <button mat-stroked-button color="primary" (click)="copy()">Copy</button>
-    </p>
-    <mat-form-field class="full-width">
-      <mat-label>You TG name</mat-label>
-      <input matInput [(ngModel)]="tgName">
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="generateTgKey()">Generate tg integration key</button>
-    <mat-form-field class="full-width">
-      <mat-label>Tg key</mat-label>
-      <input matInput [value]="tgKey">
-    </mat-form-field>
+      <button mat-raised-button color="primary" (click)="generateTgKey()">Generate tg integration key</button>
+      <mat-form-field class="full-width">
+        <mat-label>Tg key</mat-label>
+        <input matInput [value]="tgKey">
+      </mat-form-field>
+    </span>
   </mat-card-content>
 
 </mat-card>
