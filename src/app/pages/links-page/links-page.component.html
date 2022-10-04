@@ -20,6 +20,7 @@
 <div class="container">
 
   <mat-card class="entry-card note" *ngFor="let message of messages" >
-    <a href="{{message.message}}" target="_blank">{{message.message}}</a>
+    <img height="16" width="16" [src]="'https://www.google.com/s2/favicons?domain=' + message.icon" />
+    <a href="{{message.message}}" target="_blank">{{message.title}}</a>
   </mat-card>
 </div>

@@ -27,7 +27,14 @@ export class LinksPageComponent implements OnInit {
       this.authService.getLinks(this.userData)
       .pipe(untilDestroyed(this)).subscribe((w) => {
         w.forEach((e) => {
-          this.messages.push(e.data());
+          const data = e.data();
+          const url = new URL(data.message);
+          console.log(url)
+          this.messages.push({
+            url: data.message,
+            title: data.title,
+            icon: url.origin
+          });
         });
       });
     } catch(e) {
