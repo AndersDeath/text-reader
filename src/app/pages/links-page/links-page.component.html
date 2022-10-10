@@ -21,6 +21,7 @@
 
   <mat-card class="entry-card link" *ngFor="let message of messages" >
     <img height="16" width="16" [src]="'https://www.google.com/s2/favicons?domain=' + message.icon" />
-    <a href="{{message.url}}" target="_blank">{{message.title}}</a>
+    <a href="{{message.url}}" target="_blank">{{message.title}}</a> <br>
+    {{message.date | date:'HH:mm - dd.MM.YYYY'}}
   </mat-card>
 </div>

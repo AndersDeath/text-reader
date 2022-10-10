@@ -33,7 +33,8 @@ export class LinksPageComponent implements OnInit {
           this.messages.push({
             url: data.message,
             title: data.title,
-            icon: url.origin
+            icon: url.origin,
+            date: new Date(data.date)
           });
         });
       });
