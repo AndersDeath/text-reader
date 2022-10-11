@@ -16,7 +16,7 @@ export class LinksPageComponent implements OnInit {
   public userData: any;
   messages: any[] = [];
 
-  displayedColumns: string[] = ['icon', 'title', 'date', 'url'];
+  displayedColumns: string[] = ['icon', 'title', 'date'];
   public dataSource: any = []
   @ViewChild(MatSort) sort: MatSort;
 
@@ -54,7 +54,9 @@ export class LinksPageComponent implements OnInit {
             title: data.title,
             icon: url.origin,
             date: new Date(data.date)
-          })
+          });
+          this.table.renderRows();
+
         });
         // this.dataSource =  new MatTableDataSource(this.messages);
       });
