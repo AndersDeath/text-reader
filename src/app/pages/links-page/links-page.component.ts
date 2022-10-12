@@ -18,7 +18,9 @@ export class LinksPageComponent implements OnInit {
 
   displayedColumns: string[] = ['icon', 'title', 'date'];
   public dataSource: any = [];
+  public filteredSource: any = [];
   public origins: Set<any> = new Set();
+  public selectedOrigin = '---';
   @ViewChild(MatSort) sort: MatSort;
 
   @ViewChild(MatTable) table: MatTable<any>;
@@ -56,6 +58,7 @@ export class LinksPageComponent implements OnInit {
             date: new Date(data.date)
           });
           this.origins.add(url.origin);
+          this.filteredSource = [...this.dataSource];
           this.table.renderRows();
         });
         console.log(this.origins)
@@ -64,6 +67,22 @@ export class LinksPageComponent implements OnInit {
     } catch(e) {
       console.log(e);
     }
+  }
+
+  originsToArray() {
+    return ['---', ...Array.from(this.origins)];
+  }
+
+  filterOrigin(event: any) {
+    console.log(event);
+    if(event === '---') {
+      this.filteredSource = [...this.dataSource];
+    } else {
+      this.filteredSource = [...this.dataSource.filter((e: any) => {
+        return e.icon === event;
+      })];
+    }
+    this.table.renderRows();
   }
 
   logout() {
