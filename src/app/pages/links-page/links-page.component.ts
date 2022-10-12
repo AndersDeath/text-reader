@@ -17,7 +17,8 @@ export class LinksPageComponent implements OnInit {
   messages: any[] = [];
 
   displayedColumns: string[] = ['icon', 'title', 'date'];
-  public dataSource: any = []
+  public dataSource: any = [];
+  public origins: Set<any> = new Set();
   @ViewChild(MatSort) sort: MatSort;
 
   @ViewChild(MatTable) table: MatTable<any>;
@@ -42,7 +43,6 @@ export class LinksPageComponent implements OnInit {
         w.forEach((e) => {
           const data = e.data();
           const url = new URL(data.message);
-          console.log(url)
           this.messages.push({
             url: data.message,
             title: data.title,
@@ -55,10 +55,11 @@ export class LinksPageComponent implements OnInit {
             icon: url.origin,
             date: new Date(data.date)
           });
+          this.origins.add(url.origin);
           this.table.renderRows();
-
         });
-        // this.dataSource =  new MatTableDataSource(this.messages);
+        console.log(this.origins)
+        console.log(Array.from(this.origins));
       });
     } catch(e) {
       console.log(e);
