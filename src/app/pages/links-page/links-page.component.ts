@@ -2,8 +2,8 @@ import { AuthService } from './../../shared/services/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import {MatSort, Sort} from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTable } from '@angular/material/table';
 
 
 @UntilDestroy()
