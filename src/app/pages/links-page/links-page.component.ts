@@ -58,9 +58,15 @@ export class LinksPageComponent implements OnInit {
             date: new Date(data.date)
           });
           this.origins.add(url.origin);
-          this.filteredSource = [...this.dataSource];
-          this.table.renderRows();
+
         });
+        console.log(typeof this.dataSource);
+        this.filteredSource = [...this.dataSource];
+        this.filteredSource.sort(
+          (objA: any, objB: any) => objB.date.getTime() - objA.date.getTime(),
+        );
+        this.table.renderRows();
+
         console.log(this.origins)
         console.log(Array.from(this.origins));
       });
