@@ -12,7 +12,8 @@
     "gh-prepare": "npm run config -- --environment=prod && ng build --configuration production --base-href https://andersdeath.github.io/text-reader/",
     "gh-deploy": "ngh --dir=dist/text-reader/",
     "gh": "npm run gh-prepare && npm run gh-deploy",
-    "deploy:rules": "firebase deploy --only firestore:rules"
+    "deploy:rules": "firebase deploy --only firestore:rules",
+    "build:sharenium-client": "sh ./scripts/build-static.sh"
   },
   "private": true,
   "dependencies": {
