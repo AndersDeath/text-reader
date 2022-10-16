@@ -15,7 +15,7 @@ import { MatTable } from '@angular/material/table';
 export class LinksPageComponent implements OnInit {
   public userData: any;
 
-  displayedColumns: string[] = ['icon', 'title', 'date', 'count'];
+  displayedColumns: string[] = ['icon', 'title', 'date', 'count', 'edit'];
   public dataSource: any = [];
   public filteredSource: any = [];
   public origins: Set<any> = new Set();
@@ -65,7 +65,6 @@ export class LinksPageComponent implements OnInit {
               return item;
             });
           }
-
         });
         this.filteredSource = [...this.dataSource];
         this.filteredSource.sort(
@@ -116,6 +115,10 @@ export class LinksPageComponent implements OnInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  editLink(link: any) {
+    console.log(link);
   }
 
 }
