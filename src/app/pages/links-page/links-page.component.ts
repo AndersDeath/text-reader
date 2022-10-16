@@ -60,15 +60,11 @@ export class LinksPageComponent implements OnInit {
           this.origins.add(url.origin);
 
         });
-        console.log(typeof this.dataSource);
         this.filteredSource = [...this.dataSource];
         this.filteredSource.sort(
           (objA: any, objB: any) => objB.date.getTime() - objA.date.getTime(),
         );
         this.table.renderRows();
-
-        console.log(this.origins)
-        console.log(Array.from(this.origins));
       });
     } catch(e) {
       console.log(e);
@@ -80,7 +76,6 @@ export class LinksPageComponent implements OnInit {
   }
 
   filterOrigin(event: any) {
-    console.log(event);
     if(event === '---') {
       this.filteredSource = [...this.dataSource];
     } else {
@@ -88,6 +83,9 @@ export class LinksPageComponent implements OnInit {
         return e.icon === event;
       })];
     }
+    this.filteredSource.sort(
+      (objA: any, objB: any) => objB.date.getTime() - objA.date.getTime(),
+    );
     this.table.renderRows();
   }
 
