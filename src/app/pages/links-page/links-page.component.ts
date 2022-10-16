@@ -14,9 +14,8 @@ import { MatTable } from '@angular/material/table';
 })
 export class LinksPageComponent implements OnInit {
   public userData: any;
-  messages: any[] = [];
 
-  displayedColumns: string[] = ['icon', 'title', 'date'];
+  displayedColumns: string[] = ['icon', 'title', 'date', 'count'];
   public dataSource: any = [];
   public filteredSource: any = [];
   public origins: Set<any> = new Set();
@@ -45,19 +44,28 @@ export class LinksPageComponent implements OnInit {
         w.forEach((e) => {
           const data = e.data();
           const url = new URL(data.message);
-          this.messages.push({
-            url: data.message,
-            title: data.title,
-            icon: url.origin,
-            date: new Date(data.date)
+
+          const check = this.dataSource.some((item: any) => {
+            return data.message === item.url;
           });
-          this.dataSource.push({
-            url: data.message,
-            title: data.title,
-            icon: url.origin,
-            date: new Date(data.date)
-          });
-          this.origins.add(url.origin);
+          console.log(check);
+          if(!check) {
+            this.dataSource.push({
+              url: data.message,
+              title: data.title,
+              icon: url.origin,
+              date: new Date(data.date),
+              count: 1
+            });
+            this.origins.add(url.origin);
+          } else {
+            this.dataSource.map((item: any) => {
+              if(data.message === item.url) {
+                item.count = item.count + 1
+              }
+              return item;
+            });
+          }
 
         });
         this.filteredSource = [...this.dataSource];
