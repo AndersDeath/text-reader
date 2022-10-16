@@ -48,11 +48,10 @@ export class LinksPageComponent implements OnInit {
           const check = this.dataSource.some((item: any) => {
             return data.message === item.url;
           });
-          console.log(check);
           if(!check) {
             this.dataSource.push({
               url: data.message,
-              title: data.title,
+              title: data.title || 'no title',
               icon: url.origin,
               date: new Date(data.date),
               count: 1
