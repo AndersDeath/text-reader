@@ -87,7 +87,6 @@ export class LinksPageComponent implements OnInit {
           }
         });
         this.filteredSource = [...this.dataSource];
-        // this.filteredOrigins = this.originsToArray();
         this.linksOriginControl.setValue('')
         this.filteredSource.sort(
           (objA: any, objB: any) => objB.date.getTime() - objA.date.getTime(),
@@ -104,11 +103,11 @@ export class LinksPageComponent implements OnInit {
     return this.originsToArray().filter(option => option.toLowerCase().includes(filterValue));
   }
   originsToArray(): string[] {
-    return ['---', ...Array.from(this.origins)];
+    return [ALL, ...Array.from(this.origins)];
   }
 
   filterOrigin(event: any) {
-    if(event === '---') {
+    if(event === ALL) {
       this.filteredSource = [...this.dataSource];
     } else {
       this.filteredSource = [...this.dataSource.filter((e: any) => {

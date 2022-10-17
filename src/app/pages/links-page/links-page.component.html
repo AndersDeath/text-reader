@@ -19,17 +19,6 @@
 </mat-toolbar>
 <div class="container">
 
-  <mat-card class="entry-card link">
-
-  <mat-form-field appearance="fill">
-    <mat-label>Filter by origin</mat-label>
-    <select matNativeControl [(ngModel)]="selectedOrigin" (ngModelChange)="filterOrigin($event)" name="car">
-      <option *ngFor="let car of originsToArray()" [value]="car">
-        {{car}}
-      </option>
-    </select>
-  </mat-form-field>
-</mat-card>
 
 <mat-card class="entry-card link">
   <form class="example-form">
@@ -49,13 +38,6 @@
     </mat-form-field>
   </form>
 </mat-card>
-
-  <!-- <mat-card class="entry-card link" *ngFor="let message of messages" >
-    <img height="16" width="16" [src]="'https://www.google.com/s2/favicons?domain=' + message.icon" />
-    <a href="{{message.url}}" target="_blank">{{message.title}}</a> <br>
-    {{message.date | date:'HH:mm - dd.MM.YYYY'}}
-  </mat-card> -->
-
 
   <table mat-table [dataSource]="filteredSource" matSort (matSortChange)="announceSortChange($event)"
     class="mat-elevation-z8">
