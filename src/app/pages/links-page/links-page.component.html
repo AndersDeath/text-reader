@@ -31,6 +31,25 @@
   </mat-form-field>
 </mat-card>
 
+<mat-card class="entry-card link">
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Filter by origin autocomplete</mat-label>
+      <input type="text"
+             placeholder="Pick one"
+             aria-label="Number"
+             matInput
+             [formControl]="linksOriginControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOrigins | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</mat-card>
+
   <!-- <mat-card class="entry-card link" *ngFor="let message of messages" >
     <img height="16" width="16" [src]="'https://www.google.com/s2/favicons?domain=' + message.icon" />
     <a href="{{message.url}}" target="_blank">{{message.title}}</a> <br>

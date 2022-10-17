@@ -1,10 +1,13 @@
+import { map, Observable, startWith } from 'rxjs';
 import { AuthService } from './../../shared/services/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
+import { FormControl } from '@angular/forms';
 
+const ALL = '---ALL---'
 
 @UntilDestroy()
 @Component({
@@ -19,7 +22,11 @@ export class LinksPageComponent implements OnInit {
   public dataSource: any = [];
   public filteredSource: any = [];
   public origins: Set<any> = new Set();
-  public selectedOrigin = '---';
+  public selectedOrigin = ALL;
+
+  public linksOriginControl =  new FormControl('');
+  public filteredOrigins: Observable<string[]>;
+
   @ViewChild(MatSort) sort: MatSort;
 
   @ViewChild(MatTable) table: MatTable<any>;
@@ -38,6 +45,19 @@ export class LinksPageComponent implements OnInit {
     } catch(e) {
       console.log(e);
     }
+
+    this.filteredOrigins = this.linksOriginControl.valueChanges.pipe(untilDestroyed(this)).pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
+
+    this.linksOriginControl.valueChanges.subscribe((e) => {
+      if(e && this.originsToArray().includes(e)) {
+        this.filterOrigin(e);
+
+      }
+    });
+
     try {
       this.authService.getLinks(this.userData)
       .pipe(untilDestroyed(this)).subscribe((w) => {
@@ -67,6 +87,8 @@ export class LinksPageComponent implements OnInit {
           }
         });
         this.filteredSource = [...this.dataSource];
+        // this.filteredOrigins = this.originsToArray();
+        this.linksOriginControl.setValue('')
         this.filteredSource.sort(
           (objA: any, objB: any) => objB.date.getTime() - objA.date.getTime(),
         );
@@ -76,8 +98,12 @@ export class LinksPageComponent implements OnInit {
       console.log(e);
     }
   }
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
 
-  originsToArray() {
+    return this.originsToArray().filter(option => option.toLowerCase().includes(filterValue));
+  }
+  originsToArray(): string[] {
     return ['---', ...Array.from(this.origins)];
   }
 
