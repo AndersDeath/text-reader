@@ -61,8 +61,4 @@ export class DashboardPageComponent implements OnInit {
     // this.form.setValue({message: ''})
   }
 
-  logout() {
-    this.authService.signOut();
-  }
-
 }
