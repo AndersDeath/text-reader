@@ -26,6 +26,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { ViewerPageComponent } from './pages/viewer-page/viewer-page.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { LinksPageComponent } from './pages/links-page/links-page.component';
+import { HeaderComponent } from './components/header/header.component';
 
 const FirebaseModules = [
   AngularFireModule.initializeApp(environment.firebase),
@@ -47,7 +48,8 @@ const FirebaseModules = [
     TextEditPageComponent,
     ViewerPageComponent,
     UserPageComponent,
-    LinksPageComponent
+    LinksPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
