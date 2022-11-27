@@ -27,6 +27,8 @@ export class LinksPageComponent implements OnInit {
   public linksOriginControl =  new FormControl('');
   public filteredOrigins: Observable<string[]>;
 
+  private rawData: any[] = [];
+
   @ViewChild(MatSort) sort: MatSort;
 
   @ViewChild(MatTable) table: MatTable<any>;
@@ -61,8 +63,9 @@ export class LinksPageComponent implements OnInit {
     try {
       this.authService.getLinks(this.userData)
       .pipe(untilDestroyed(this)).subscribe((w) => {
-        w.forEach((e) => {
+        w.docs.forEach((e) => {
           const data = e.data();
+          this.rawData.push(data);
           const url = new URL(data.message);
 
           const check = this.dataSource.some((item: any) => {
@@ -86,6 +89,7 @@ export class LinksPageComponent implements OnInit {
             });
           }
         });
+        console.log(JSON.stringify(this.rawData));
         this.filteredSource = [...this.dataSource];
         this.linksOriginControl.setValue('')
         this.filteredSource.sort(
