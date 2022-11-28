@@ -1,1 +1,9 @@
 <app-header></app-header>
+<div class="container">
+  <mat-card class="entry-card note" *ngFor="let link of links" >
+    <mat-card-title>{{link.title}}</mat-card-title>
+    <mat-card-actions align="end">
+      <a [href]="link.href" mat-button >Read</a>
+    </mat-card-actions>
+  </mat-card>
+</div>

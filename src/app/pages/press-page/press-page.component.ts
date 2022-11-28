@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PressPageComponent implements OnInit {
 
+  public links: any = [];
+
   constructor() { }
 
   ngOnInit(): void {
