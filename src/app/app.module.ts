@@ -27,6 +27,7 @@ import { ViewerPageComponent } from './pages/viewer-page/viewer-page.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { LinksPageComponent } from './pages/links-page/links-page.component';
 import { HeaderComponent } from './components/header/header.component';
+import { PressPageComponent } from './pages/press-page/press-page.component';
 
 const FirebaseModules = [
   AngularFireModule.initializeApp(environment.firebase),
@@ -49,7 +50,8 @@ const FirebaseModules = [
     ViewerPageComponent,
     UserPageComponent,
     LinksPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    PressPageComponent
   ],
   imports: [
     BrowserModule,
