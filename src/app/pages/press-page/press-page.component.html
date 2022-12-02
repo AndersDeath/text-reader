@@ -3,7 +3,7 @@
   <mat-card class="entry-card note" *ngFor="let link of links" >
     <mat-card-title>{{link.title}}</mat-card-title>
     <mat-card-actions align="end">
-      <a [href]="link.href" mat-button >Read</a>
+      <a [href]="link.href" target="_blank" >Read</a>
     </mat-card-actions>
   </mat-card>
 </div>
